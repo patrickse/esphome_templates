@@ -5,8 +5,8 @@ substitutions:
   voltage_div: "775"
 
 esphome:
-  name: project-template
-  friendly_name: Project Template
+  name: powerplug
+  friendly_name: Powerplug
   # Automatically add the mac address to the name
   # so you can use a single firmware for all devices
   name_add_mac_suffix: true
