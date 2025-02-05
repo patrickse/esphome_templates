@@ -1,3 +1,9 @@
+substitutions:
+  # Higher value gives lower watt readout
+  current_res: "0.00280"
+  # Lower value gives lower voltage readout
+  voltage_div: "775"
+
 esphome:
   name: project-template
   friendly_name: Project Template
@@ -28,12 +34,12 @@ captive_portal:
 
 text_sensor:
   - platform: version
-    name: "${devicename} - Version"
+    name: "Version"
     icon: mdi:cube-outline
 
 binary_sensor:
   - platform: status
-    name: "${devicename} - Status"
+    name: "Status"
     device_class: connectivity
 
   - platform: gpio
@@ -41,7 +47,7 @@ binary_sensor:
       number: GPIO13
       mode: INPUT_PULLUP
       inverted: True
-    id: "${devicename}_button_state"
+    id: "button_state"
     on_press:
       - switch.toggle: button_switch
 
@@ -51,17 +57,17 @@ time:
 
 sensor:
   - platform: wifi_signal
-    name: "${devicename} - Wifi Signal"
+    name: "Wifi Signal"
     update_interval: 60s
     icon: mdi:wifi
 
   - platform: uptime
-    name: "${devicename} - Uptime"
+    name: "Uptime"
     update_interval: 60s
     icon: mdi:clock-outline
 
   - platform: total_daily_energy
-    name: "${devicename} - Todays Usage"
+    name: "Todays Usage"
     power_id: "power_wattage"
     filters:
       # Multiplication factor from W to kW is 0.001
@@ -71,7 +77,7 @@ sensor:
 
   - platform: adc
     pin: VCC
-    name: "${devicename} - VCC Volt"
+    name: "VCC Volt"
     icon: mdi:flash-outline
 
   - platform: hlw8012
@@ -86,19 +92,19 @@ sensor:
     update_interval: 3s
 
     current:
-      name: "${devicename} - Ampere"
+      name: "Ampere"
       unit_of_measurement: A
       accuracy_decimals: 3
       icon: mdi:current-ac
 
     voltage:
-      name: "${devicename} - Volt"
+      name: "Volt"
       unit_of_measurement: V
       accuracy_decimals: 1
       icon: mdi:flash-outline
 
     power:
-      name: "${devicename} - Watt"
+      name: "Watt"
       unit_of_measurement: W
       id: "power_wattage"
       icon: mdi:gauge
@@ -127,7 +133,7 @@ output:
 
 switch:
   - platform: template
-    name: "${devicename} - Switch"
+    name: "Switch"
     icon: mdi:power
     optimistic: true
     id: button_switch
