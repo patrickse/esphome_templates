@@ -1,0 +1,24 @@
+{
+    "name": "Powerplug Firmware",
+    "version": "0.1.0",
+    "home_assistant_domain": "esphome",
+    "new_install_prompt_erase": false,
+    "builds": [
+      {
+        "chipFamily": "ESP8266",
+        "ota": {
+          "path": "v0.1.0/powerplug-esp8266.factory.bin",
+          "md5": "a61089ef21dd3b7702e05549a51c4c19",
+          "summary": "## What's Changed\r\n* Bugfix: Avoid crashing when started without internet access",
+          "release_url": "https://github.com/patrickse/esphome_templates/releases/tag/v0.1.0"
+        },
+        "parts": [
+          {
+            "path": "v0.1.0/powerplug-esp8266.factory.bin",
+            "offset": 0
+          }
+        ]
+      }
+    ]
+  }
+  
