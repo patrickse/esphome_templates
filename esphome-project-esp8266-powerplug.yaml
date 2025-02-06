@@ -28,6 +28,17 @@ api:
 # OTA is required for Over-the-Air updating
 ota:
   - platform: esphome
+  - platform: http_request
+    id: ota_http_request
+
+http_request:
+  verify_ssl: false # !NOT A GOOD IDEA"
+
+update:
+  - platform: http_request
+    name: None
+    id: update_http_request
+    source: https://raw.githubusercontent.com/patrickse/esphome_templates/refs/heads/main/manifest.json
 
 wifi:
   # Set up a wifi access point using the device name above
@@ -144,10 +155,10 @@ switch:
     id: button_switch
     turn_on_action:
       - switch.turn_on: relay
-      - light.turn_off: led_blue
+      - light.turn_on: led_blue
     turn_off_action:
       - switch.turn_off: relay
-      - light.turn_on: led_blue
+      - light.turn_off: led_blue
   - platform: gpio
     pin: GPIO15
     id: relay
